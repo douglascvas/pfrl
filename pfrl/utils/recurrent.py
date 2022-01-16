@@ -122,7 +122,7 @@ def pack_one_step_batch_as_sequences(xs):
     if isinstance(xs, tuple):
         return tuple(pack_one_step_batch_as_sequences(x) for x in xs)
     else:
-        return nn.utils.rnn.pack_sequence(xs[:, None])
+        return nn.utils.rnn.pack_sequence([x for x in xs[:, None]])
 
 
 def unpack_sequences_as_one_step_batch(pack):
